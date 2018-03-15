@@ -116,7 +116,6 @@ class PanelDecorator extends React.Component {
                 onClick: () => this.onCollapseClick(),
                 key: `${this.props.model.getID()}-collapse-button`,
             };
-
             staticButtons.push(React.createElement(PanelDecoratorButton, collapseButtonProps, null));
         }
 
@@ -165,7 +164,7 @@ class PanelDecorator extends React.Component {
             };
             return React.createElement(rightComponent.component, rightComponent.props, null);
         });
-        return [...staticButtons, ...dynamicButtons];
+        return this.context.fitToScreen ? [] : [...staticButtons, ...dynamicButtons];
     }
 
     getAnnotationComponents(annotationComponentData, bBox, titleHeight) {
@@ -387,7 +386,7 @@ class PanelDecorator extends React.Component {
                 >
                     {this.state.editingTitle}
                 </EditableText>}
-                { this.props.headerComponent &&
+                {this.props.headerComponent &&
                     <this.props.headerComponent
                         x={bBox.x + titleHeight + iconSize + protocolOffset + publicPrivateFlagoffset}
                         y={bBox.y}
@@ -453,6 +452,7 @@ PanelDecorator.defaultProps = {
 
 PanelDecorator.contextTypes = {
     editor: PropTypes.instanceOf(Object).isRequired,
+    fitToScreen: PropTypes.bool.isRequired,
 };
 
 export default PanelDecorator;
