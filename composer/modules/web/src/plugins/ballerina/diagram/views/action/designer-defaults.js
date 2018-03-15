@@ -16,6 +16,8 @@
  * under the License.
  */
 
+export const topOffset = 0;
+
 export const iconForTool = {
     height: 300,
     width: 300,

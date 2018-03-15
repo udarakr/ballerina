@@ -287,6 +287,9 @@ class TopLevelNodes extends React.Component {
         }
         const packageDefExpanded = model.viewState.packageDefExpanded
             || (this.packageDefValue && (this.packageDefValue !== ''));
+        if (this.context.fitToScreen) {
+            return <g />;
+        }
         return (
             <g>
                 <g className='package-definition-head'>
@@ -355,6 +358,7 @@ TopLevelNodes.propTypes = {
 TopLevelNodes.contextTypes = {
     editor: PropTypes.instanceOf(Object).isRequired,
     environment: PropTypes.instanceOf(Object).isRequired,
+    fitToScreen: PropTypes.bool.isRequired,
 };
 
 export default TopLevelNodes;

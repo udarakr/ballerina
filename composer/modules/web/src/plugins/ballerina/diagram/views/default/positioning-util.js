@@ -197,7 +197,7 @@ class PositioningUtil {
         this.positionTopLevelNodes(node);
         let width = 0;
         // Set the height of the toplevel nodes so that the other nodes would be positioned relative to it
-        let height = node.viewState.components.topLevelNodes.h + 50;
+        let height = node.viewState.components.topLevelNodes.h + this.config.topOffset;
         // filter out visible children from top level nodes.
         const children = node.filterTopLevelNodes((child) => {
             return TreeUtil.isFunction(child) || TreeUtil.isService(child)
